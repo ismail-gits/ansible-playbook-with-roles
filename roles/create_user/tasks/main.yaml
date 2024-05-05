@@ -1,0 +1,4 @@
+- name: Create a new user
+  user:
+    name: ismail
+    groups: "{{ user_groups }}"

@@ -1,0 +1,32 @@
+---
+- name: Make sure docker and docker-compose are installed
+  hosts: aws_ec2
+  become: true
+  become_user: root
+  roles:
+    - install_prerequisites
+
+- name: Make sure docker is started
+  hosts: aws_ec2
+  become: true
+  become_user: root
+  tasks:
+    - name: Start docker deamon
+      ansible.builtin.systemd:
+        name: docker
+        state: started
+
+- name: Create new linux user
+  hosts: aws_ec2
+  become: true
+  become_user: root
+  roles:
+    - create_user
+
+- name: Start docker containers
+  hosts: aws_ec2
+  become: true
+  become_user: ismail
+  roles:
+    - start_docker_containers
+  

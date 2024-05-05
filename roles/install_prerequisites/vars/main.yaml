@@ -1,0 +1,1 @@
+docker_compose_url: https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-{{lookup('pipe', 'uname -s')}}-{{lookup('pipe', 'uname -m')}}
